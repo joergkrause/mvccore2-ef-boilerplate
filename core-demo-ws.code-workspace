@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "core-demo"
+		},
+
+		{
+			"path": "core-demo-dal"
+		}
+	],
+	"settings": {}
+}
