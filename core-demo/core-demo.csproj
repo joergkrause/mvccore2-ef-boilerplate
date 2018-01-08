@@ -11,5 +11,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\core-demo-dal\core-demo-dal.csproj" />
+    <ProjectReference Include="..\core-demo-bll\core-demo-bll.csproj" />
   </ItemGroup>
 </Project>
