@@ -26,7 +26,7 @@ namespace JoergIsAGeek.CoreWorkshop.DemoUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DatabaseContext>(o => o.UseSqlServer(""));
+            services.AddDbContext<DatabaseContext>(o => o.UseSqlServer("Server=localhost;Database=CoreDemoEF;User Id=sa;Password=Ubuntu_Admin;"));
             services.AddMvc();
         }
 

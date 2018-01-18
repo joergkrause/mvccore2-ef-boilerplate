@@ -4747,6 +4747,16 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
+      "core-demo-bll/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/core-demo-bll.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/core-demo-bll.dll": {}
+        }
+      },
       "core-demo-dal/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -12538,6 +12548,11 @@
         "windowsazure.storage.nuspec"
       ]
     },
+    "core-demo-bll/1.0.0": {
+      "type": "project",
+      "path": "../core-demo-bll/core-demo-bll.csproj",
+      "msbuildProject": "../core-demo-bll/core-demo-bll.csproj"
+    },
     "core-demo-dal/1.0.0": {
       "type": "project",
       "path": "../core-demo-dal/core-demo-dal.csproj",
@@ -12549,6 +12564,7 @@
       "Microsoft.AspNetCore.All >= 2.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
+      "core-demo-bll >= 1.0.0",
       "core-demo-dal >= 1.0.0"
     ]
   },
@@ -12582,6 +12598,9 @@
           "projectReferences": {
             "/home/joerg/Apps/Core/core-demo-dal/core-demo-dal.csproj": {
               "projectPath": "/home/joerg/Apps/Core/core-demo-dal/core-demo-dal.csproj"
+            },
+            "/home/joerg/Apps/Core/core-demo-bll/core-demo-bll.csproj": {
+              "projectPath": "/home/joerg/Apps/Core/core-demo-bll/core-demo-bll.csproj"
             }
           }
         }

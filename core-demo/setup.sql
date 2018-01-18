@@ -10,7 +10,7 @@ IF NOT EXISTS (
 )
 CREATE DATABASE CoreDemo
 GO
--- Create a new table called 'CoreDemoUser' in schema 'SchemaName'
+-- Create a new table called 'CoreDemoUser' in schema 'dbo'
 -- Drop the table if it already exists
 IF OBJECT_ID('dbo.CoreDemoUser', 'U') IS NOT NULL
 DROP TABLE dbo.CoreDemoUser
