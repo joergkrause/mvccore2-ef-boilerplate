@@ -11,8 +11,9 @@
 *.userprefs
 
 # Build results
-[Dd]ebug/netcoreapp2.0/
 [Dd]ebug/
+[Dd]ebug/netcoreapp2.0/
+netcoreapp2.0/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -24,6 +25,10 @@ bld/
 [Bb]in/[Dd]ebug/
 [Bb]in/[Dd]ebug/netcoreapp2.0/
 [Oo]bj/
+[Oo]bj/[Dd]ebug/
+[Oo]bj/[Dd]ebug/netcoreapp2.0/
+*.dll
+*.pdb
 
 # Visual Studio 2015 cache/options directory
 .vs/

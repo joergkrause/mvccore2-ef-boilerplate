@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace JoergIsAGeek.CoreWorkshop.DemoUI
+namespace aspnetcoreapp
 {
     public class Program
     {

@@ -6,13 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using JoergIsAGeek.CoreWorkshop.DataAccessLayer;
 
-
-// JoergIsAGeek.CoreWorkshop.DemoUI
-
-namespace JoergIsAGeek.CoreWorkshop.DemoUI
+namespace aspnetcoreapp
 {
     public class Startup
     {
@@ -26,7 +21,6 @@ namespace JoergIsAGeek.CoreWorkshop.DemoUI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DatabaseContext>(o => o.UseSqlServer("Server=localhost;Database=CoreDemoEF;User Id=sa;Password=Ubuntu_Admin;"));
             services.AddMvc();
         }
 
