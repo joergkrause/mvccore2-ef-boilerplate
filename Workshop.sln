@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ui-tools", "ui-tools", "{473807F5-6A50-4A3E-9387-459E72684C67}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{473807F5-6A50-4A3E-9387-459E72684C67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSetup", "ui-tools\DatabaseSetup\DatabaseSetup.csproj", "{1DC646AA-D622-41AE-8C77-731E5B7DDF31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSetup", "Tools\UI-Tools\DatabaseSetup\DatabaseSetup.csproj", "{1DC646AA-D622-41AE-8C77-731E5B7DDF31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{2E4E75B9-1B60-49F8-AFD5-0D2079B6BECB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "ApplicationServer\DataAccessLayer\DataAccessLayer.csproj", "{2E4E75B9-1B60-49F8-AFD5-0D2079B6BECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{A65C26F4-64C7-4B9E-B37B-EAB954674D55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "ApplicationServer\BusinessLogicLayer\BusinessLogicLayer.csproj", "{A65C26F4-64C7-4B9E-B37B-EAB954674D55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObjects", "DataTransferObjects\DataTransferObjects.csproj", "{0FA85E43-80A3-47A0-A45C-1C651621971F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTransferObjects", "ApplicationServer\DataTransferObjects\DataTransferObjects.csproj", "{0FA85E43-80A3-47A0-A45C-1C651621971F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{3A44DD8D-5CCD-4D13-BA45-F877A3F73167}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "ApplicationServer\DomainModel\DomainModel.csproj", "{3A44DD8D-5CCD-4D13-BA45-F877A3F73167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{65F44E53-C83A-4DA2-8D2B-0CB66CF97254}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "ApplicationServer\Repository\Repository.csproj", "{65F44E53-C83A-4DA2-8D2B-0CB66CF97254}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{6AD9F713-11A4-422B-949C-50B634EF3BD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ApplicationServer\ServiceLayer\ServiceLayer.csproj", "{6AD9F713-11A4-422B-949C-50B634EF3BD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webfrontend", "webfrontend\webfrontend.csproj", "{A9901B19-B4CE-4FDE-87EB-6F52797CBB3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrontEnd", "WebFrontEndServer\WebFrontEnd\webfrontend.csproj", "{A9901B19-B4CE-4FDE-87EB-6F52797CBB3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
