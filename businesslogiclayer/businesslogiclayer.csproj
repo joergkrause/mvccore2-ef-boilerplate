@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\datatransferobjects\datatransferobjects.csproj" />
+    <ProjectReference Include="..\domainmodel\domainmodel.csproj" />
+    <ProjectReference Include="..\repository\repository.csproj" />
+    <ProjectReference Include="..\dataaccesslayer\dataaccesslayer.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Automapper" Version="6.2.2" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+</Project>

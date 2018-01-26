@@ -1,0 +1,12 @@
+﻿@model IEnumerable<EmployeeViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<ul>
+    @foreach(var item in Model){
+        <li>
+            @item.Name <a asp-controller="Home" asp-action="About" asp-route-id="@item.Id">Details</a>        
+        </li>
+    }
+</ul>

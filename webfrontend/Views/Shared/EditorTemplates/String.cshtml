@@ -1,0 +1,13 @@
+@model String
+@{
+    var req = ViewData.ModelMetadata.IsRequired; // Syntax falsch!
+}
+<div class="form-field">
+    <label>
+
+    </label>
+    <input type="text" name="" value="@Model" />
+    @if(req){
+        <span>*</span>
+    }
+</div>

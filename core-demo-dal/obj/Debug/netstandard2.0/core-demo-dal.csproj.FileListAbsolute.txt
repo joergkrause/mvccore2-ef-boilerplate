@@ -1,8 +1,0 @@
-/home/joerg/Apps/Core/core-demo-dal/obj/Debug/netstandard2.0/core-demo-dal.csproj.CoreCompileInputs.cache
-/home/joerg/Apps/Core/core-demo-dal/obj/Debug/netstandard2.0/core-demo-dal.AssemblyInfoInputs.cache
-/home/joerg/Apps/Core/core-demo-dal/obj/Debug/netstandard2.0/core-demo-dal.AssemblyInfo.cs
-/home/joerg/Apps/Core/core-demo-dal/bin/Debug/netstandard2.0/core-demo-dal.deps.json
-/home/joerg/Apps/Core/core-demo-dal/bin/Debug/netstandard2.0/core-demo-dal.dll
-/home/joerg/Apps/Core/core-demo-dal/bin/Debug/netstandard2.0/core-demo-dal.pdb
-/home/joerg/Apps/Core/core-demo-dal/obj/Debug/netstandard2.0/core-demo-dal.dll
-/home/joerg/Apps/Core/core-demo-dal/obj/Debug/netstandard2.0/core-demo-dal.pdb

@@ -1,0 +1,23 @@
+@model String
+@{
+    var employeeObject = ViewModelData.ModelMetadata.Container;
+    var hiddenAttr = 
+    employeeObject.GetType()
+        .GetCustomAttributes(typeof(HiddenAttribute), true)
+        .OfType<HiddenAttribute>()
+        .SingleOrDefault();
+    if (hiddenAttr != null){
+        // Darstellung anpassen
+    }
+
+    var req = ViewModelData.ModelMetadata.Required; // Syntax falsch!
+}
+<div class="form-field">
+    <label>
+
+    </label>
+    <input type="text" name="" value="@Model" placeholder="@watermark" />
+    @if(req){
+        <span>*</span>
+    }
+</div>
