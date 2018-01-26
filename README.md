@@ -4,6 +4,8 @@ This project shows a complete architecture for a highly scalable and flexible en
 
 I used MS SQL Server 2017 for Linux to have a database backend ready to go.
 
+> **Tested with .NET Core Version 2.1.4 as available in Feb 2017**
+
 ## Features
 
 It's a multitier architecture with a Service Layer. The goal is to have a division between a Web Front End (WFE) server, which can scal out to match the requests and a backend or Application Server (APP) that scales for computing power and database requests. The APP is also able to provide additional features as micro service, easily scalable through Docker containers.
@@ -14,9 +16,9 @@ The Service Layer has an OpenAPI (formerly known as Swagger) interface. It expos
 
 To setup you need:
 
-* .NET Core 2.0
+* .NET Core 2.0 (or newer)
 * MS SQL Server 2017 for Linux
-* NodeJS 8 and NPM 5.5
+* NodeJS 8 LTS and NPM 5.5 (or newer)
 
 > I recommend using Visual Studio Code, which runs very well on Ubuntu 16.
 

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\DataTransferObjects\DataTransferObjects.csproj" />
-    <ProjectReference Include="..\Domainmodel\DomainModel.csproj" />
+    <ProjectReference Include="..\DomainModel\DomainModel.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
   </ItemGroup>
