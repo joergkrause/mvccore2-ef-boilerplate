@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ui-tools", "ui-tools", "{473807F5-6A50-4A3E-9387-459E72684C67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "databasesetup", "ui-tools\databasesetup\databasesetup.csproj", "{1DC646AA-D622-41AE-8C77-731E5B7DDF31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseSetup", "ui-tools\DatabaseSetup\DatabaseSetup.csproj", "{1DC646AA-D622-41AE-8C77-731E5B7DDF31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{2E4E75B9-1B60-49F8-AFD5-0D2079B6BECB}"
 EndProject

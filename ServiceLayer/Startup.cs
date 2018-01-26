@@ -15,8 +15,11 @@ using JoergIsAGeek.Workshop.DomainModel;
 using JoergIsAGeek.Workshop.Repository;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace servicelayer
+namespace JoergIsAGeek.Workshop.ServiceLayer
 {
+
+    // Client: Autorest, npm/nodejs, Microsoft.Rest.ClientRuntime.2.2.0 requireds
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -65,4 +68,3 @@ namespace servicelayer
     }
 }
 
-// Client: Autorest, npm/nodejs, Microsoft.Rest.ClientRuntime.2.2.0 erforderlich
