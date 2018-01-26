@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SodgeIt.WebFrontEnd.ServiceProxy;
-using SodgeIt.Workshop.WebFrontEnd.Models;
+using JoergIsAGeek.WebFrontEnd.ServiceProxy;
+using JoergIsAGeek.Workshop.WebFrontEnd.Models;
 using webfrontend.Models;
 
 namespace webfrontend.Controllers

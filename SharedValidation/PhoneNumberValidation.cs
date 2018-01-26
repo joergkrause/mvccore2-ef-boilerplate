@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SodgeIt.Workshop.SharedValidation
+namespace JoergIsAGeek.Workshop.SharedValidation
 {
     public class PhoneNumberValidation : ValidationAttribute 
     {

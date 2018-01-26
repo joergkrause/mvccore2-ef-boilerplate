@@ -1,4 +1,4 @@
-namespace SodgeIt.Workshop.DomainModel
+namespace JoergIsAGeek.Workshop.DomainModel
 {
     public class Project : EntityBase
     {

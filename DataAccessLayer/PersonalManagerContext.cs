@@ -2,10 +2,10 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using SodgeIt.Workshop.DataAccessLayer.DatabaseDesign;
-using SodgeIt.Workshop.DomainModel;
+using JoergIsAGeek.Workshop.DataAccessLayer.DatabaseDesign;
+using JoergIsAGeek.Workshop.DomainModel;
 
-namespace SodgeIt.Workshop.DataAccessLayer
+namespace JoergIsAGeek.Workshop.DataAccessLayer
 {
     public class PersonalManagerContext : DbContext
     {

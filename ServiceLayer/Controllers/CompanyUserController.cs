@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using SodgeIt.Workshop.BusinessLogicLayer;
-using SodgeIt.Workshop.DataTransferObjects;
+using JoergIsAGeek.Workshop.BusinessLogicLayer;
+using JoergIsAGeek.Workshop.DataTransferObjects;
 
 namespace servicelayer.Controllers
 {

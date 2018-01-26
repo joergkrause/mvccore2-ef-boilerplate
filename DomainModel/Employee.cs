@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SodgeIt.Workshop.DomainModel
+namespace JoergIsAGeek.Workshop.DomainModel
 {
     public class Employee : CompanyUser
     {

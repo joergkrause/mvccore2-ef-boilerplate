@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
-using SodgeIt.Workshop.DataAccessLayer;
-using SodgeIt.Workshop.DomainModel;
+using JoergIsAGeek.Workshop.DataAccessLayer;
+using JoergIsAGeek.Workshop.DomainModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace SodgeIt.Workshop.Setup
+namespace JoergIsAGeek.Workshop.Setup
 {
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Setup DB");
-            var connString = @"Server=localhost;Database=SodgeIT;User Id=SA;Password=Ubuntu_Admin;";
+            var connString = @"Server=localhost;Database=JoergIsAGeek;User Id=SA;Password=Ubuntu_Admin;";
             var optionsBuilder = new DbContextOptionsBuilder<PersonalManagerContext>();
             optionsBuilder.UseSqlServer(connString);
             using (var context = new PersonalManagerContext(optionsBuilder.Options)){

@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using SodgeIt.Workshop.DomainModel;
+using JoergIsAGeek.Workshop.DomainModel;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace SodgeIt.Workshop.DataAccessLayer.DatabaseDesign
+namespace JoergIsAGeek.Workshop.DataAccessLayer.DatabaseDesign
 {
 
     //[Export(typeof(IEntityTypeConfiguration))]

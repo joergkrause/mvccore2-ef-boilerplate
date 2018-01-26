@@ -9,10 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using SodgeIt.Workshop.BusinessLogicLayer;
-using SodgeIt.Workshop.DataAccessLayer;
-using SodgeIt.Workshop.DomainModel;
-using SodgeIt.Workshop.Repository;
+using JoergIsAGeek.Workshop.BusinessLogicLayer;
+using JoergIsAGeek.Workshop.DataAccessLayer;
+using JoergIsAGeek.Workshop.DomainModel;
+using JoergIsAGeek.Workshop.Repository;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace servicelayer

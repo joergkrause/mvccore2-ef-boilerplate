@@ -1,6 +1,6 @@
 using AutoMapper;
 
-namespace SodgeIt.Workshop.BusinessLogicLayer {
+namespace JoergIsAGeek.Workshop.BusinessLogicLayer {
 
     public abstract class Manager {
 

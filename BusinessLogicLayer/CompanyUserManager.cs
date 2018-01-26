@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using SodgeIt.Workshop.DomainModel;
-using SodgeIt.Workshop.DataTransferObjects;
-using SodgeIt.Workshop.Repository;
+using JoergIsAGeek.Workshop.DomainModel;
+using JoergIsAGeek.Workshop.DataTransferObjects;
+using JoergIsAGeek.Workshop.Repository;
 using AutoMapper;
 
-namespace SodgeIt.Workshop.BusinessLogicLayer {
+namespace JoergIsAGeek.Workshop.BusinessLogicLayer {
 
     public class CompanyUserManager : Manager, ICompanyUserManager {
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace SodgeIt.Workshop.DomainModel
+namespace JoergIsAGeek.Workshop.DomainModel
 {
     public class ExternalUser : CompanyUser
     {

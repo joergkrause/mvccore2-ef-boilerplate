@@ -3,7 +3,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace SodgeIt.Workshop.DataTransferObjects
+namespace JoergIsAGeek.Workshop.DataTransferObjects
 {
     public class EmployeeDto
     {

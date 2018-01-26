@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using SodgeIt.Workshop.DataAccessLayer;
-using SodgeIt.Workshop.DomainModel;
+using JoergIsAGeek.Workshop.DataAccessLayer;
+using JoergIsAGeek.Workshop.DomainModel;
 using System.Linq.Expressions;
 
-namespace SodgeIt.Workshop.Repository
+namespace JoergIsAGeek.Workshop.Repository
 {
     public interface IGenericRepository<T> where T : EntityBase
     {

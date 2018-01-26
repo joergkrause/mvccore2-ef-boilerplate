@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace SodgeIt.WebFrontEnd.ServiceProxy.Models
+namespace JoergIsAGeek.WebFrontEnd.ServiceProxy.Models
 {
     using Microsoft.Rest;
     using Newtonsoft.Json;

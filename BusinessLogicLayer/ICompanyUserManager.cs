@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using SodgeIt.Workshop.DataTransferObjects;
+using JoergIsAGeek.Workshop.DataTransferObjects;
 
-namespace SodgeIt.Workshop.BusinessLogicLayer
+namespace JoergIsAGeek.Workshop.BusinessLogicLayer
 {
     public interface ICompanyUserManager
     {

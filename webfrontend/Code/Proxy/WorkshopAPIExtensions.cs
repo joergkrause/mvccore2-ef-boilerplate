@@ -4,7 +4,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace SodgeIt.WebFrontEnd.ServiceProxy
+namespace JoergIsAGeek.WebFrontEnd.ServiceProxy
 {
     using Models;
     using System.Collections;

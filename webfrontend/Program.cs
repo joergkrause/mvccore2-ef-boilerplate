@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace SodgeIt.Workshop.WebFrontEnd
+namespace JoergIsAGeek.Workshop.WebFrontEnd
 {
     public class Program
     {

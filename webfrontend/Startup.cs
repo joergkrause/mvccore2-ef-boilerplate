@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SodgeIt.WebFrontEnd.ServiceProxy;
+using JoergIsAGeek.WebFrontEnd.ServiceProxy;
 
-namespace SodgeIt.Workshop.WebFrontEnd
+namespace JoergIsAGeek.Workshop.WebFrontEnd
 {
     public class Startup
     {

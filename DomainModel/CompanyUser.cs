@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SodgeIt.Workshop.DomainModel
+namespace JoergIsAGeek.Workshop.DomainModel
 {
     public abstract class CompanyUser : AuditableEntityBase
     {

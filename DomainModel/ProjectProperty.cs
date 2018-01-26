@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SodgeIt.Workshop.DomainModel
+namespace JoergIsAGeek.Workshop.DomainModel
 {
 
     [ComplexType]
