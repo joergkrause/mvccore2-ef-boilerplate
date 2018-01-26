@@ -9,7 +9,7 @@
     <PackageReference Include="Microsoft.entityframeworkcore.sqlserver" Version="2.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DataAccessLayer\DataAccessLayer.csproj" />
-    <ProjectReference Include="..\..\DomainModel\DomainModel.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationServer\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\..\..\ApplicationServer\DomainModel\DomainModel.csproj" />
   </ItemGroup>
 </Project>

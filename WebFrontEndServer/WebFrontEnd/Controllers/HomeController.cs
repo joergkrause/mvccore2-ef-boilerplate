@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using JoergIsAGeek.WebFrontEnd.ServiceProxy;
 using JoergIsAGeek.Workshop.WebFrontEnd.Models;
-using webfrontend.Models;
 
-namespace webfrontend.Controllers
+namespace JoergIsAGeek.Workshop.WebFrontEnd.Controllers
 {
     public class HomeController : Controller
     {

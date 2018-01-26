@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "ApplicationSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ApplicationServer\ServiceLayer\ServiceLayer.csproj", "{6AD9F713-11A4-422B-949C-50B634EF3BD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrontEnd", "WebFrontEndServer\WebFrontEnd\webfrontend.csproj", "{A9901B19-B4CE-4FDE-87EB-6F52797CBB3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrontEnd", "WebFrontEndServer\WebFrontEnd\WebFrontEnd.csproj", "{A9901B19-B4CE-4FDE-87EB-6F52797CBB3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

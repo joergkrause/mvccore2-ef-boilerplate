@@ -88,7 +88,7 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer
             {
                 // TODO:
             }
-            catch (DbUpdateException uex)
+            catch (DbUpdateException)
             {
                 // TODO:
             }
