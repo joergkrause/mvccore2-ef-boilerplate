@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using SharedValidation.Ui;
 
-namespace JoergIsAGeek.Workshop.WebFrontEnd.Models
+namespace JoergIsAGeek.Workshop.ViewModels
 {
     public class EmployeeViewModel
     {
