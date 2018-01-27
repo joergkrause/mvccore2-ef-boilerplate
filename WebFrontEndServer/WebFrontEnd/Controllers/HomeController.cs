@@ -52,7 +52,7 @@ namespace JoergIsAGeek.Workshop.WebFrontEnd.Controllers
                 // TODO: Speichern
             }
             return View(model);
-        
+        }
 
         public IActionResult Contact()
         {

@@ -11,7 +11,7 @@ using JoergIsAGeek.Workshop.DataAccessLayer.ControlModels;
 
 namespace JoergIsAGeek.Workshop.Repository
 {
-    public class GenericAsyncRepository<T> : IGenericRepository<T> where T : EntityBase
+    public class GenericAsyncRepository<T> : IGenericAsyncRepository<T> where T : EntityBase
     {
 
         private readonly PersonalManagerContext context;
