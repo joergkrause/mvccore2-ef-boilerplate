@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using JoergIsAGeek.WebFrontEnd.ServiceProxy;
-using JoergIsAGeek.Workshop.WebFrontEnd.Models;
+using JoergIsAGeek.Workshop.ViewModels;
 
 namespace JoergIsAGeek.Workshop.WebFrontEnd.Controllers
 {
@@ -52,7 +52,7 @@ namespace JoergIsAGeek.Workshop.WebFrontEnd.Controllers
                 // TODO: Speichern
             }
             return View(model);
-        }
+        
 
         public IActionResult Contact()
         {

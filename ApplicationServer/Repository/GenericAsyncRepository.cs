@@ -6,16 +6,17 @@ using JoergIsAGeek.Workshop.DataAccessLayer;
 using JoergIsAGeek.Workshop.DomainModel;
 using System.Linq.Expressions;
 using JoergIsAGeek.Workshop.DomainModel.Abstracts;
+using System.Threading.Tasks;
 using JoergIsAGeek.Workshop.DataAccessLayer.ControlModels;
 
 namespace JoergIsAGeek.Workshop.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase
+    public class GenericAsyncRepository<T> : IGenericRepository<T> where T : EntityBase
     {
 
         private readonly PersonalManagerContext context;
 
-        public GenericRepository(PersonalManagerContext context)
+        public GenericAsyncRepository(PersonalManagerContext context)
         {
             this.context = context;
         }
@@ -28,26 +29,25 @@ namespace JoergIsAGeek.Workshop.Repository
             }
         }
 
-        public T Find(int id) {
-            return Context.Set<T>().Find(id);
+        public async Task<T> Find(int id) {
+            return await Context.Set<T>().FindAsync(id);
         }
 
-        public IEnumerable<T> Read(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> Read(Expression<Func<T, bool>> predicate)
         {
-            IQueryable<T> result = null;
             var context = Context;
-            result = context.Set<T>().Where(predicate);
+            var result = await context.Set<T>().Where(predicate).ToListAsync();
             return result;
         }
 
-        public IEnumerable<U> FilterRead<U>(Expression<Func<U, bool>> predicate) where U : T
+        public async Task<IEnumerable<U>> FilterRead<U>(Expression<Func<U, bool>> predicate) where U : T
         {
             var context = Context;
-            var result = context.Set<U>().Where(predicate).OfType<U>();
+            var result = await context.Set<U>().Where(predicate).OfType<U>().ToListAsync();
             return result;
         }
 
-        public IEnumerable<U> FilterRead<U>(Expression<Func<U, bool>> predicate, params Expression<Func<U, object>>[] paths) where U : T
+        public async Task<IEnumerable<U>> FilterRead<U>(Expression<Func<U, bool>> predicate, params Expression<Func<U, object>>[] paths) where U : T
         {
             var context = Context;
             var result = context.Set<U>().Where(predicate);
@@ -55,10 +55,10 @@ namespace JoergIsAGeek.Workshop.Repository
             {
                 result = result.Include(path);
             }
-            return result.OfType<U>();
+            return await result.OfType<U>().ToListAsync();
         }
 
-        public IEnumerable<T> Read(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] paths)
+        public async Task<IEnumerable<T>> Read(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] paths)
         {
             var context = Context;
             var result = context.Set<T>().Where(predicate);
@@ -66,26 +66,26 @@ namespace JoergIsAGeek.Workshop.Repository
             {
                 result = result.Include(path);
             }
-            return result;
+            return await result.ToListAsync();
         }
 
-        public int Count(Expression<Func<T, bool>> predicate = null)
+        public async Task<int> Count(Expression<Func<T, bool>> predicate = null)
         {
-            return Context.Set<T>().Count(predicate);
+            return await Context.Set<T>().CountAsync(predicate);
         }
 
-        public ErrorModel InsertOrUpdate(T model, string userName)
+        public async Task<ErrorModel> InsertOrUpdate(T model, string userName)
         {
             var context = Context;
             context.Entry(model).State = model.Id == 0 ? EntityState.Added : EntityState.Modified;
-            return context.Save(userName);
+            return await context.SaveAsync(userName);
         }
 
-        public ErrorModel Delete(T model)
+        public async Task<ErrorModel> Delete(T model)
         {
             var context = Context;
             context.Entry(model).State = EntityState.Deleted;
-            return context.Save();
+            return await context.SaveAsync();
         }
 
 

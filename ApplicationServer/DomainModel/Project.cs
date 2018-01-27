@@ -1,3 +1,5 @@
+using JoergIsAGeek.Workshop.DomainModel.Abstracts;
+
 namespace JoergIsAGeek.Workshop.DomainModel
 {
     public class Project : EntityBase

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace JoergIsAGeek.Workshop.DomainModel
+namespace JoergIsAGeek.Workshop.DomainModel.Abstracts
 {
     public abstract class EntityBase
     {
@@ -10,6 +10,8 @@ namespace JoergIsAGeek.Workshop.DomainModel
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        public byte[] RowVersion { get; set; }
 
 
     }

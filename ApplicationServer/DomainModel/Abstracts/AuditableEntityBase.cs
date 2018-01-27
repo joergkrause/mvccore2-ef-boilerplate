@@ -1,13 +1,12 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace JoergIsAGeek.Workshop.DomainModel
+namespace JoergIsAGeek.Workshop.DomainModel.Abstracts
 {
 
     public abstract class AuditableEntityBase : EntityBase
     {
 
-        //[Column("CA", Order=1, TypeName="")]
         public DateTime CreatedAt { get; set; }
 
         public string CreatedBy { get; set; }

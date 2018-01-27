@@ -5,12 +5,15 @@ using Microsoft.EntityFrameworkCore;
 using JoergIsAGeek.Workshop.DataAccessLayer;
 using JoergIsAGeek.Workshop.DomainModel;
 using System.Linq.Expressions;
+using JoergIsAGeek.Workshop.DomainModel.Abstracts;
+using JoergIsAGeek.Workshop.DataAccessLayer.ControlModels;
 
 namespace JoergIsAGeek.Workshop.Repository
 {
     public interface IGenericRepository<T> where T : EntityBase
     {
 
+        T Find(int id);
 
         IEnumerable<T> Read(Expression<Func<T, bool>> predicate);
 
@@ -20,9 +23,11 @@ namespace JoergIsAGeek.Workshop.Repository
 
         IEnumerable<U> FilterRead<U>(Expression<Func<U, bool>> predicate, params Expression<Func<U, object>>[] paths) where U : T;
 
-        bool InsertOrUpdate(T model);
+        int Count(Expression<Func<T, bool>> predicate);
 
-        bool Delete(T model);
+        ErrorModel InsertOrUpdate(T model, string userName);
+
+        ErrorModel Delete(T model);
 
     }
 }
