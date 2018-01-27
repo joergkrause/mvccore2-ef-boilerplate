@@ -30,10 +30,16 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
             modelBuilder.Entity<Employee> ().ToTable ("CompanyUsers");
             modelBuilder.Entity<ExternalUser> ().ToTable ("CompanyUsers");
-            modelBuilder.ApplyConfiguration (new RoomConfiguration ());
-            modelBuilder.ApplyConfiguration (new ProjectConfiguration ());
-            modelBuilder.ApplyConfiguration (new CompanyUserConfiguration ());
+            LoadConfigurations(modelBuilder, typeof(Room), typeof(Project), typeof(CompanyUser));
             base.OnModelCreating (modelBuilder);
+        }
+
+        private void LoadConfigurations(ModelBuilder modelBuilder, params Type[] types)
+        {
+            //             modelBuilder.ApplyConfiguration (new RoomConfiguration ());
+            // modelBuilder.ApplyConfiguration (new ProjectConfiguration ());
+            // modelBuilder.ApplyConfiguration (new CompanyUserConfiguration ());
+
         }
 
         public ErrorModel Save (string userName = null) {
@@ -113,6 +119,8 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
                 }
             }
         }
+
+        
 
     }
 }

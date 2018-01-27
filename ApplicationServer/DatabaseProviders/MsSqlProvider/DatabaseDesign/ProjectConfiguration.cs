@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Composition;
 using Microsoft.EntityFrameworkCore;
 using JoergIsAGeek.Workshop.DomainModel;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace JoergIsAGeek.Workshop.DataAccessLayer.DatabaseDesign
+namespace JoergIsAGeek.Workshop.DatabaseProvider.MsSqlProvider.DatabaseDesign
 {
 
-    //[Export(typeof(IEntityTypeConfiguration))]
+    [Export(typeof(IEntityTypeConfiguration<Project>))]
     public class ProjectConfiguration : CommonConfiguration, IEntityTypeConfiguration<Project>
     {
         public void Configure(EntityTypeBuilder<Project> builder)

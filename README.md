@@ -51,3 +51,15 @@ $ npm run build
 ~~~
 
 It's required to use NodeJS here because of the AutoREST lib. The npm task calls the required .NET cli and invokes the C#-compiler.
+
+## Projects
+
+### Database
+
+Path: *ApplicationServer/DataAccessLayer*
+
+#### Special Features
+
+The configuration is done in Config classes, mostly not as attributes. So one can replace the database dependent settings by just replacing the config.
+
+This demo shows MS SQL Server and MySQL.

@@ -1,7 +1,11 @@
 using JoergIsAGeek.Workshop.DomainModel.Abstracts;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace JoergIsAGeek.Workshop.DataAccessLayer.DatabaseDesign {
+namespace JoergIsAGeek.Workshop.DatabaseProvider.MsSqlProvider.DatabaseDesign {
+
+    /// <summary>
+    /// Base configuration for all models.
+    /// </summary>
     public class CommonConfiguration {
         public void ConfigureBase<T> (EntityTypeBuilder<T> builder) where T : EntityBase {
             builder.HasKey (p => p.Id);
