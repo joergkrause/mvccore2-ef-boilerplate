@@ -1,9 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Composition;
+using System.Composition.Hosting;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using JoergIsAGeek.Workshop.DataAccessLayer.ControlModels;
-using JoergIsAGeek.Workshop.DataAccessLayer.DatabaseDesign;
 using JoergIsAGeek.Workshop.DomainModel;
 using JoergIsAGeek.Workshop.DomainModel.Abstracts;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +15,12 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
     public class PersonalManagerContext : DbContext {
 
         private readonly string connString;
+        private readonly string configurationAssemblyPath;
 
         public PersonalManagerContext (IConfiguration config) : base () {
             connString = config.GetConnectionString (nameof (PersonalManagerContext));
+            // in appsettings.json just provide the path and name of the config assembly
+            configurationAssemblyPath = config["ConfigurationAssemblyPath"];
         }
 
         public PersonalManagerContext (DbContextOptions<PersonalManagerContext> options) : base (options) { }
@@ -30,17 +35,34 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
             modelBuilder.Entity<Employee> ().ToTable ("CompanyUsers");
             modelBuilder.Entity<ExternalUser> ().ToTable ("CompanyUsers");
-            LoadConfigurations(modelBuilder, typeof(Room), typeof(Project), typeof(CompanyUser));
+            LoadConfigurations(modelBuilder);
             base.OnModelCreating (modelBuilder);
         }
 
-        private void LoadConfigurations(ModelBuilder modelBuilder, params Type[] types)
+        private void LoadConfigurations(ModelBuilder modelBuilder)
         {
-            //             modelBuilder.ApplyConfiguration (new RoomConfiguration ());
-            // modelBuilder.ApplyConfiguration (new ProjectConfiguration ());
-            // modelBuilder.ApplyConfiguration (new CompanyUserConfiguration ());
-
+            // scan assemblies
+            Assembly confAssembly = Assembly.LoadFile(configurationAssemblyPath);
+            var config = new ContainerConfiguration().WithAssembly(confAssembly);
+            using (var container = config.CreateContainer()) {
+                // RoomConfiguration = container.GetExport<IEntityTypeConfiguration<Room>>();
+                // ProjectConfiguration = container.GetExport<IEntityTypeConfiguration<Project>>();
+                // CompanyUserConfiguration = container.GetExport<IEntityTypeConfiguration<CompanyUser>>();
+                // or:
+                IRoomConfiguration configuration;
+                var exports = container.GetExports<IEntityTypeConfiguration<EntityBase>>();
+                exports.ToList().ForEach(e => modelBuilder.ApplyConfiguration(e));
+            }
         }
+
+        // [Import]
+        // private IEntityTypeConfiguration<Room> RoomConfiguration { get; set; }
+
+        // [Import]
+        // private IEntityTypeConfiguration<Project> ProjectConfiguration { get; set; }
+
+        // [Import]
+        // private IEntityTypeConfiguration<CompanyUser> CompanyUserConfiguration { get; set; }
 
         public ErrorModel Save (string userName = null) {
             SaveTasks (userName);

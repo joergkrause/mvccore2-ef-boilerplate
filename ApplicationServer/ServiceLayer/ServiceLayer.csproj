@@ -21,5 +21,8 @@
     <ProjectReference Include="..\DomainModel\DomainModel.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\DatabaseProviders\MsSqlProvider\MsSqlProvider.csproj" />
+    <ProjectReference Include="..\DatabaseProviders\MySqlProvider\MySqlProvider.csproj" />
+    <ProjectReference Include="..\DatabaseProviders\ProviderInterfaces\ProviderInterfaces.csproj" />
   </ItemGroup>
 </Project>

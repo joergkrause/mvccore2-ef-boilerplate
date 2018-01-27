@@ -3,6 +3,7 @@ using System.Composition;
 using Microsoft.EntityFrameworkCore;
 using JoergIsAGeek.Workshop.DomainModel;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using JoergIsAGeek.Workshop.DatabaseProviders.ProviderInterfaces;
 
 namespace JoergIsAGeek.Workshop.DatabaseProvider.MsSqlProvider.DatabaseDesign
 {
