@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using JoergIsAGeek.Workshop.DomainModel;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using JoergIsAGeek.Workshop.DatabaseProviders.ProviderInterfaces;
+using JoergIsAGeek.Workshop.DomainModel.Abstracts;
 
 namespace JoergIsAGeek.Workshop.DatabaseProvider.MsSqlProvider.DatabaseDesign
 {
 
-    [Export(typeof(IEntityTypeConfiguration<Room>))]
-    public class RoomConfiguration : CommonConfiguration, IEntityTypeConfiguration<Room>, IRoomConfiguration
+    [Export("GenericConfiguration", typeof(IEntityTypeConfiguration<Room>))]
+    public class RoomConfiguration : CommonConfiguration, IEntityTypeConfiguration<Room>, IGenericConfiguration
     {
         public void Configure(EntityTypeBuilder<Room> builder)
         {            

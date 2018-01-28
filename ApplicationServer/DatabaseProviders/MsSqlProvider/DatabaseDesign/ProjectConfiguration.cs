@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using JoergIsAGeek.Workshop.DomainModel;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using JoergIsAGeek.Workshop.DatabaseProviders.ProviderInterfaces;
+using JoergIsAGeek.Workshop.DomainModel.Abstracts;
 
 namespace JoergIsAGeek.Workshop.DatabaseProvider.MsSqlProvider.DatabaseDesign
 {
 
-    [Export(typeof(IEntityTypeConfiguration<Project>))]
-    public class ProjectConfiguration : CommonConfiguration, IEntityTypeConfiguration<Project>
+    [Export("GenericConfiguration", typeof(IEntityTypeConfiguration<Project>))]
+    public class ProjectConfiguration : CommonConfiguration, IEntityTypeConfiguration<Project>, IGenericConfiguration
     {
         public void Configure(EntityTypeBuilder<Project> builder)
         {

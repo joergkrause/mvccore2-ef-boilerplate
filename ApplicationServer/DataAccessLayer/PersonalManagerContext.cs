@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Composition;
 using System.Composition.Hosting;
@@ -11,7 +12,6 @@ using JoergIsAGeek.Workshop.DomainModel;
 using JoergIsAGeek.Workshop.DomainModel.Abstracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using MySQL.Data.EntityFrameworkCore.Extensions;
 
 namespace JoergIsAGeek.Workshop.DataAccessLayer {
     public class PersonalManagerContext : DbContext {
@@ -33,19 +33,33 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
         public PersonalManagerContext (DbContextOptions<PersonalManagerContext> options) : base (options) { }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
+            var defaultProvider = "";
             // In case the service layer calls this we just provide the connection string and config assembly
             if (!String.IsNullOrEmpty (connString) && !String.IsNullOrEmpty(configurationUseDatabase)) {
                 switch (configurationUseDatabase) {
                     case "UseSqlServer":                
                         optionsBuilder.UseSqlServer (connString);
+                        defaultProvider = "MsSqlProvider.dll";
                         break;
                     case "UseMySqlServer":                
-                        optionsBuilder.UseMySQL (connString);
+                        optionsBuilder.UseMySql (connString);
+                        defaultProvider = "MySqlProvider.dll";
                         break;
                     default:
                     throw new ArgumentOutOfRangeException($"Unknown database provider {configurationUseDatabase}.");
                 }
             }
+            // scan assemblies
+            var folder = Path.GetDirectoryName(this.GetType().Assembly.Location);
+            Assembly confAssembly = Assembly.LoadFile (Path.Combine(folder, configurationAssemblyPath ?? defaultProvider));
+            var config = new ContainerConfiguration ().WithAssembly (confAssembly);
+            using (var container = config.CreateContainer ()) {
+                // fill in the exports where we have the [ImportMany] attribute on
+                EntityConfigurations = new List<IEntityTypeConfiguration<EntityBase>>();
+                EntityConfigurations.Add((IEntityTypeConfiguration<EntityBase>)container.GetExport<IEntityTypeConfiguration<Room>>("GenericConfiguration"));
+                EntityConfigurations.Add((IEntityTypeConfiguration<EntityBase>)container.GetExport<IEntityTypeConfiguration<Project>>("GenericConfiguration"));
+                EntityConfigurations.Add((IEntityTypeConfiguration<EntityBase>)container.GetExport<IEntityTypeConfiguration<CompanyUser>>("GenericConfiguration"));
+            }            
         }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
@@ -56,29 +70,17 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
         }
 
         private void LoadConfigurations (ModelBuilder modelBuilder) {
-            // scan assemblies
-            var folder = Path.GetDirectoryName(this.GetType().Assembly.Location);
-            Assembly confAssembly = Assembly.LoadFile (Path.Combine(folder, configurationAssemblyPath ?? "MsSqlProvider.dll"));
-            var config = new ContainerConfiguration ().WithAssembly (confAssembly);
-            using (var container = config.CreateContainer ()) {
-                // RoomConfiguration = container.GetExport<IEntityTypeConfiguration<Room>>();
-                // ProjectConfiguration = container.GetExport<IEntityTypeConfiguration<Project>>();
-                // CompanyUserConfiguration = container.GetExport<IEntityTypeConfiguration<CompanyUser>>();
-                // or:
-                // IRoomConfiguration configuration;
-                var exports = container.GetExports<IEntityTypeConfiguration<EntityBase>> ();
-                exports.ToList ().ForEach (e => modelBuilder.ApplyConfiguration (e));
-            }
+            ((IEnumerable<IEntityTypeConfiguration<EntityBase>>)EntityConfigurations)
+                .ToList()
+                .ForEach (e => modelBuilder.ApplyConfiguration (e));
         }
 
-        // [Import]
-        // private IEntityTypeConfiguration<Room> RoomConfiguration { get; set; }
+        /// <summary>
+        /// External assemblies have exports of the base type 
+        /// </summary>
+        /// <returns></returns>
+        private ICollection<IEntityTypeConfiguration<EntityBase>> EntityConfigurations { get; set; }
 
-        // [Import]
-        // private IEntityTypeConfiguration<Project> ProjectConfiguration { get; set; }
-
-        // [Import]
-        // private IEntityTypeConfiguration<CompanyUser> CompanyUserConfiguration { get; set; }
 
         public ErrorModel Save (string userName = null) {
             SaveTasks (userName);
