@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Composition;
 using System.Composition.Hosting;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -10,48 +11,63 @@ using JoergIsAGeek.Workshop.DomainModel;
 using JoergIsAGeek.Workshop.DomainModel.Abstracts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using MySQL.Data.EntityFrameworkCore.Extensions;
 
 namespace JoergIsAGeek.Workshop.DataAccessLayer {
     public class PersonalManagerContext : DbContext {
 
+        // externally provided connection string
         private readonly string connString;
+        // path to an assembly with EF configurations
         private readonly string configurationAssemblyPath;
+        // The method used to add database connection
+        private readonly string configurationUseDatabase;
 
         public PersonalManagerContext (IConfiguration config) : base () {
             connString = config.GetConnectionString (nameof (PersonalManagerContext));
             // in appsettings.json just provide the path and name of the config assembly
             configurationAssemblyPath = config["ConfigurationAssemblyPath"];
+            configurationUseDatabase = config["ConfigurationUseDatabase"];
         }
 
         public PersonalManagerContext (DbContextOptions<PersonalManagerContext> options) : base (options) { }
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
-            //            if (sql)
-            optionsBuilder.UseSqlServer (connString);
-            //            if(sqlit)
-            //                optionsBuilder.UseSqlite(connString);
+            // In case the service layer calls this we just provide the connection string and config assembly
+            if (!String.IsNullOrEmpty (connString) && !String.IsNullOrEmpty(configurationUseDatabase)) {
+                switch (configurationUseDatabase) {
+                    case "UseSqlServer":                
+                        optionsBuilder.UseSqlServer (connString);
+                        break;
+                    case "UseMySqlServer":                
+                        optionsBuilder.UseMySQL (connString);
+                        break;
+                    default:
+                    throw new ArgumentOutOfRangeException($"Unknown database provider {configurationUseDatabase}.");
+                }
+            }
         }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
             modelBuilder.Entity<Employee> ().ToTable ("CompanyUsers");
             modelBuilder.Entity<ExternalUser> ().ToTable ("CompanyUsers");
-            LoadConfigurations(modelBuilder);
+            LoadConfigurations (modelBuilder);
             base.OnModelCreating (modelBuilder);
         }
 
-        private void LoadConfigurations(ModelBuilder modelBuilder)
-        {
+        private void LoadConfigurations (ModelBuilder modelBuilder) {
             // scan assemblies
-            Assembly confAssembly = Assembly.LoadFile(configurationAssemblyPath);
-            var config = new ContainerConfiguration().WithAssembly(confAssembly);
-            using (var container = config.CreateContainer()) {
+            var folder = Path.GetDirectoryName(this.GetType().Assembly.Location);
+            Assembly confAssembly = Assembly.LoadFile (Path.Combine(folder, configurationAssemblyPath ?? "MsSqlProvider.dll"));
+            var config = new ContainerConfiguration ().WithAssembly (confAssembly);
+            using (var container = config.CreateContainer ()) {
                 // RoomConfiguration = container.GetExport<IEntityTypeConfiguration<Room>>();
                 // ProjectConfiguration = container.GetExport<IEntityTypeConfiguration<Project>>();
                 // CompanyUserConfiguration = container.GetExport<IEntityTypeConfiguration<CompanyUser>>();
                 // or:
-                IRoomConfiguration configuration;
-                var exports = container.GetExports<IEntityTypeConfiguration<EntityBase>>();
-                exports.ToList().ForEach(e => modelBuilder.ApplyConfiguration(e));
+                // IRoomConfiguration configuration;
+                var exports = container.GetExports<IEntityTypeConfiguration<EntityBase>> ();
+                exports.ToList ().ForEach (e => modelBuilder.ApplyConfiguration (e));
             }
         }
 
@@ -68,7 +84,7 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
             SaveTasks (userName);
             ErrorModel result = new ErrorModel ();
             try {
-                Validation();
+                Validation ();
                 var saveResult = base.SaveChanges ();
                 result.Result = saveResult;
             } catch (DbUpdateConcurrencyException cex) {
@@ -77,9 +93,9 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
             } catch (DbUpdateException uex) {
                 result.Message = uex.Message;
                 result.InnerException = uex;
-            }  catch(ValidationException vex) {
+            } catch (ValidationException vex) {
                 result.Message = vex.Message;
-                result.InnerException = vex;                
+                result.InnerException = vex;
             } finally { }
             return result;
         }
@@ -88,7 +104,7 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
             SaveTasks (userName);
             ErrorModel result = new ErrorModel ();
             try {
-                Validation();
+                Validation ();
                 var saveResult = await base.SaveChangesAsync ();
                 result.Result = saveResult;
             } catch (DbUpdateConcurrencyException cex) {
@@ -97,11 +113,10 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
             } catch (DbUpdateException uex) {
                 result.Message = uex.Message;
                 result.InnerException = uex;
-            }  catch(ValidationException vex) {
+            } catch (ValidationException vex) {
                 result.Message = vex.Message;
-                result.InnerException = vex;                
-            }
-            finally { }
+                result.InnerException = vex;
+            } finally { }
             return result;
         }
 
@@ -141,8 +156,6 @@ namespace JoergIsAGeek.Workshop.DataAccessLayer {
                 }
             }
         }
-
-        
 
     }
 }

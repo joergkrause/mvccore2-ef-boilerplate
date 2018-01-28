@@ -5,14 +5,14 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": "Launch Setup Console",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/core-demo/bin/Debug/netcoreapp2.0/core-demo.dll",
+            "program": "${workspaceFolder}/Tools/UI-Tools/DatabaseSetup/bin/Debug/netcoreapp2.0/DatabaseSetup.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/core-demo",
+            "cwd": "${workspaceFolder}/Tools/UI-Tools/DatabaseSetup",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
