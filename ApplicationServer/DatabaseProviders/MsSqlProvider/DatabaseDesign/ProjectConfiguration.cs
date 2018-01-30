@@ -9,13 +9,12 @@ using JoergIsAGeek.Workshop.DomainModel.Abstracts;
 namespace JoergIsAGeek.Workshop.DatabaseProvider.MsSqlProvider.DatabaseDesign
 {
 
-    [Export("GenericConfiguration", typeof(IEntityTypeConfiguration<Project>))]
-    public class ProjectConfiguration : CommonConfiguration, IEntityTypeConfiguration<Project>, IGenericConfiguration
+    public class ProjectConfiguration : CommonConfiguration<Project>, IGenericConfiguration
     {
-        public void Configure(EntityTypeBuilder<Project> builder)
+        public override void Configure(EntityTypeBuilder<Project> builder)
         {
+            base.Configure(builder);
             builder.ToTable("Projects");
-            base.ConfigureBase(builder);
             builder.Property(p => p.Name).HasMaxLength(32).IsRequired(true);
             // Complex Type
             var subType = builder.OwnsOne(p => p.Properties);

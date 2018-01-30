@@ -11,5 +11,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj" />
+    <ProjectReference Include="..\DatabaseProviders\ProviderInterfaces\ProviderInterfaces.csproj" />
+    <ProjectReference Include="..\DatabaseProviders\MsSqlProvider\MsSqlProvider.csproj" />
   </ItemGroup>
 </Project>

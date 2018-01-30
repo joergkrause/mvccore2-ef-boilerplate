@@ -9,12 +9,11 @@ using JoergIsAGeek.Workshop.DomainModel.Abstracts;
 namespace JoergIsAGeek.Workshop.DatabaseProvider.MsSqlProvider.DatabaseDesign
 {
 
-    [Export("GenericConfiguration", typeof(IEntityTypeConfiguration<CompanyUser>))]
-    public class CompanyUserConfiguration : CommonConfiguration, IEntityTypeConfiguration<CompanyUser>, IGenericConfiguration
+    public class CompanyUserConfiguration : CommonConfiguration<CompanyUser>, IGenericConfiguration
     {
-        public void Configure(EntityTypeBuilder<CompanyUser> builder)
+        public override void Configure(EntityTypeBuilder<CompanyUser> builder)
         {
-            base.ConfigureBase(builder);
+            base.Configure(builder);
             builder.ToTable("CompanyUsers");
         }
     }
