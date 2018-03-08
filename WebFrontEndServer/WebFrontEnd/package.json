@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "build": "./node_modules/.bin/gulp && npm run create-proxy && dotnet build",
-    "start": "dotnet run",
+    "start": "./node_modules/.bin/concurrently \"cd ../../ApplicationServer/ServiceLayer/ && dotnet run\" \"cd ../../WebFrontEndServer/WebFrontEnd && dotnet run\"",
+    "create-proxy-all": "cd ../../ApplicationServer/ServiceLayer/ && dotnet run && cd ../../WebFrontEndServer/WebFrontEnd && npm run create-proxy && npm start",
     "create-proxy": "./node_modules/.bin/autorest --input-file=http://localhost:5001/swagger/v1/swagger.json --namespace=JoergIsAGeek.WebFrontEnd.ServiceProxy --output-folder=Code/Proxy --csharp --verbose",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "autorest": "^2.0.4238",
+    "concurrently": "^3.5.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",
