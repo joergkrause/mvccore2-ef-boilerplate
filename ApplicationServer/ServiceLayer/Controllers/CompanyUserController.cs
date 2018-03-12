@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using JoergIsAGeek.Workshop.BusinessLogicLayer;
 using JoergIsAGeek.Workshop.DataTransferObjects;
 
-namespace servicelayer.Controllers
+namespace JoergIsAGeek.Workshop.ServiceLayer.Controllers
 {
     [Route("api/[controller]")]
     public class CompanyUserController : Controller
